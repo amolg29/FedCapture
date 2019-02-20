@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="false" thread-count="1">
+
+    <!--                      Task Order                                  -->
+
+  <test thread-count="1" name="ChromeTest1" parallel="methods">
+    <classes>
+       <class name="tests.AddOpprtunityTaskOrder"/>
+      </classes> 
+     </test>
+       
+       <test thread-count="1" name="ChromeTest2" parallel="methods"> 
+       <classes>
+       <class name="tests.EditOpportunity"/>
+       </classes> 
+     </test>
+         
+   <test thread-count="1" name="ChromeTest3" parallel="methods"> 
+    <classes>   
+       <class name="tests.EditButtonOpportunity"/>
+        </classes> 
+     </test>
+       
+       <test thread-count="1" name="ChromeTest4" parallel="methods"> 
+    <classes> 
+       <class name="tests.MarkStageComplete"/>
+       </classes> 
+     </test>
+     
+       <test thread-count="1" name="ChromeTest5" parallel="methods"> 
+    <classes> 
+       <class name="tests.ChangeRecordType"/>
+       </classes> 
+     </test>
+     
+      <test thread-count="1" name="ChromeTest6" parallel="methods"> 
+    <classes> 
+       <class name="tests.CloneOpportunity"/>
+     </classes> 
+     </test>
+     
+     <test thread-count="1" name="ChromeTest7" parallel="methods"> 
+    <classes> 
+       <class name="tests.SearchBoxEdit"/>
+     </classes> 
+     </test>
+     
+     <test thread-count="1" name="ChromeTest8" parallel="methods"> 
+    <classes> 
+       <class name="tests.DeleteOpportunity"/>
+     </classes> 
+     </test>
+     
+     
+     
+           <!--                      RFP TESTS                                     -->
+     
+     
+     <!-- 
+     
+      <test thread-count="1" name="ChromeTest8" parallel="methods"> 
+    <classes> 
+      <class name="tests.AddOpportunityRFP"/>
+      </classes> 
+     </test>
+      <test thread-count="1" name="ChromeTest9" parallel="methods"> 
+    <classes> 
+      <class name="tests.EditOpportunity"/>
+       </classes> 
+     </test>
+     <test thread-count="1" name="ChromeTest10" parallel="methods"> 
+    <classes>
+      <class name="tests.EditButtonOpportunity"/>
+      </classes> 
+     </test>
+     <test thread-count="1" name="ChromeTest11" parallel="methods"> 
+    <classes>
+      <class name="tests.MarkStageComplete"/>
+       </classes> 
+     </test>
+      <test thread-count="1" name="ChromeTest12" parallel="methods"> 
+    <classes> 
+       <class name="tests.ChangeRecordType"/>
+       </classes> 
+     </test>
+     
+      <test thread-count="1" name="ChromeTest13" parallel="methods"> 
+    <classes>
+      <class name="tests.CloneOpportunity"/>
+      </classes> 
+     </test> 
+  
+     <test thread-count="1" name="ChromeTest14" parallel="methods"> 
+    <classes> 
+       <class name="tests.SearchBoxEdit"/>
+     </classes> 
+     </test>
+     
+     <test thread-count="1" name="ChromeTest15" parallel="methods"> 
+    <classes> 
+       <class name="tests.DeleteOpportunity"/>
+     </classes> 
+     </test>
+     
+ -->     
+     
+  
+</suite> <!-- Suite -->
