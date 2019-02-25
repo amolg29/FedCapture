@@ -1,32 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="107481" started-at="2019-02-20T05:58:29Z" finished-at="2019-02-20T06:00:17Z">
+  <suite name="Default suite" duration-ms="185525" started-at="2019-02-25T11:49:01Z" finished-at="2019-02-25T11:52:07Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="107481" started-at="2019-02-20T05:58:29Z" finished-at="2019-02-20T06:00:17Z">
-      <class name="tests.AddOpprtunityTaskOrder">
-        <test-method status="PASS" signature="setCapabilities()[pri:0, instance:tests.AddOpprtunityTaskOrder@2b98378d]" name="setCapabilities" is-config="true" duration-ms="10631" started-at="2019-02-20T11:28:29Z" finished-at="2019-02-20T11:28:40Z">
+    <test name="Default test" duration-ms="185525" started-at="2019-02-25T11:49:01Z" finished-at="2019-02-25T11:52:07Z">
+      <class name="adminFlows.CustomizeOpp">
+        <test-method status="PASS" signature="setCapabilities()[pri:0, instance:adminFlows.CustomizeOpp@4b9e13df]" name="setCapabilities" is-config="true" duration-ms="15993" started-at="2019-02-25T17:19:01Z" finished-at="2019-02-25T17:19:17Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setCapabilities -->
-        <test-method status="PASS" signature="addOpportunityTask()[pri:1, instance:tests.AddOpprtunityTaskOrder@2b98378d]" name="addOpportunityTask" duration-ms="96815" started-at="2019-02-20T11:28:40Z" finished-at="2019-02-20T11:30:17Z">
+        <test-method status="PASS" signature="customizeOpp()[pri:1, instance:adminFlows.CustomizeOpp@4b9e13df]" name="customizeOpp" duration-ms="113348" started-at="2019-02-25T17:19:17Z" finished-at="2019-02-25T17:21:11Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- addOpportunityTask -->
-        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:tests.AddOpprtunityTaskOrder@2b98378d]" name="afterMethod" is-config="true" duration-ms="2" started-at="2019-02-20T11:30:17Z" finished-at="2019-02-20T11:30:17Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=addOpportunityTask status=SUCCESS method=AddOpprtunityTaskOrder.addOpportunityTask()[pri:1, instance:tests.AddOpprtunityTaskOrder@2b98378d] output={null}]]]>
-              </value>
-            </param>
-          </params>
+        </test-method> <!-- customizeOpp -->
+        <test-method status="PASS" signature="verifyandDelete()[pri:2, instance:adminFlows.CustomizeOpp@4b9e13df]" name="verifyandDelete" duration-ms="56159" started-at="2019-02-25T17:21:11Z" finished-at="2019-02-25T17:22:07Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- afterMethod -->
-      </class> <!-- tests.AddOpprtunityTaskOrder -->
+        </test-method> <!-- verifyandDelete -->
+      </class> <!-- adminFlows.CustomizeOpp -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
