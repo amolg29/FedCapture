@@ -8,6 +8,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 
 public class ResourceBudgetPage {
 
@@ -31,7 +32,12 @@ public class ResourceBudgetPage {
     
     By row1Input = By.xpath("//table[@class='slds-table slds-table--bordered slds-table--cell-buffer']//input[@class='slds-input 1 0 input uiInput uiInputText uiInput--default uiInput--input']");
     
+    By row2Input = By.xpath("//table[@class='slds-table slds-table--bordered slds-table--cell-buffer']//input[@class='slds-input 1 1 input uiInput uiInputText uiInput--default uiInput--input']");
+    
+    
     By save = By.xpath("//button[text()='Save']");
+    
+    By clouredbox =By.xpath("slds-input bgcolor1 0 0 input uiInput uiInputText uiInput--default uiInput--input");
     
     
     
@@ -174,10 +180,17 @@ public class ResourceBudgetPage {
     }
     
     
-    public void rowInput() {
+    public void row1Input(String hours) {
     	
     	
-    	driver.findElement(row1Input).sendKeys("18");
+    	driver.findElement(row1Input).sendKeys(hours);
+    }
+    
+    
+    public void row2Input(String hours) {
+    	
+    	
+    	driver.findElement(row2Input).sendKeys(hours);
     }
     
     
@@ -201,10 +214,26 @@ public class ResourceBudgetPage {
     }
     
     
+    public void colorcheck() {
+    	
+    	WebElement element = driver.findElement(clouredbox);
+    	String color=element.getAttribute("class");
+    			System.out.println(element.getClass());
+    	
+    	String fcolor="slds-input bgcolor1 0 0 input uiInput uiInputText uiInput--default uiInput--input";
+    	
+    	Assert.assertEquals(color, fcolor);	
+    	
+  
+    }
+    
+    
+    
     public void saveExpenseClick() {
     	
     	
     	driver.findElement(saveExpense).click();
+    	
     }
     
     

@@ -120,12 +120,12 @@ public class BudgetHandling {
 		Thread.sleep(5000);
 		
 		resourceBudget.startDateInput();
-		CalenderHandle2.calenderHandleDate(driver, "01/22/2019");
+		CalenderHandle2.calenderHandleDate(driver, "02/19/2019");
 		
 		Thread.sleep(4000);
 		
 		resourceBudget.endDateInput();
-		CalenderHandle2.calenderHandleDate(driver, "02/05/2019");
+		CalenderHandle2.calenderHandleDate(driver, "02/28/2019");
 		
 		Thread.sleep(4000);
 		resourceBudget.goButtonClick();
@@ -143,7 +143,7 @@ public class BudgetHandling {
 		resourceBudget.Add();
 		Thread.sleep(4000);
 		
-		resourceBudget.rowInput();
+		resourceBudget.row1Input("18");
 		Thread.sleep(3000);
 		
 		

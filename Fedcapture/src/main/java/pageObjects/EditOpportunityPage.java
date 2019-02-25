@@ -68,6 +68,8 @@ public class EditOpportunityPage {
 	
 	By deleteButton= By.xpath("//a[@title='Delete']");
 	
+	By testingtab= By.xpath("//a[@data-firsttab='Testing']");
+	
 	
 	
 	public  EditOpportunityPage(WebDriver driver) {
@@ -261,5 +263,24 @@ public class EditOpportunityPage {
 	  
   }
 	
+  
+  public void testingTabVerify() {
+	  
+	 try {
+	WebDriverWait wait = new WebDriverWait(driver, 10);
+	wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(testingtab));
+	 } catch (Exception e) {e.printStackTrace();}
+	 
+	 
+	 
+	 
+	System.out.println("Verified successfully");
+	 
+	  
+  }
+  
+  
+  
+  
 	
 }

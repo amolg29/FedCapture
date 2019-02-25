@@ -1,7 +1,9 @@
 package pageObjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -18,7 +20,11 @@ public class DashboardPage {
 	By objectManager = By.xpath("//li[@class='tabItem slds-context-bar__item borderRight hasActions oneConsoleTabItem']/a[@title='Object Manager']");
 	
 	By lastelementload = By.xpath("//div[@class='tileNavButton']/button/span[text()='Learn More']");
-			
+	
+	By searchbox = By.xpath("//input[@placeholder='Search apps or items...']");
+	
+	By custopp = By.xpath("//a[@title='Customize Opp Layout']//mark");
+	
 			
 	public DashboardPage(WebDriver driver) {
 		
@@ -40,6 +46,24 @@ public class DashboardPage {
 	}
 	
 	 
+	
+	public void searchInput(String input) {
+		
+		
+		
+	    driver.findElement(searchbox).sendKeys(input);
+	    
+	    
+				
+	}
+	
+	
+	public void custOppLayoutClick() {
+		
+		
+		driver.findElement(custopp).click();
+		
+	}
 	
 	
 	
