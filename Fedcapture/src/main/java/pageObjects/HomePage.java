@@ -54,7 +54,8 @@ public class HomePage {
 	   Thread.sleep(6000);
 	   
 	   Actions mouse = new Actions(driver);
-	   mouse.click();
+	   //mouse.click();
+	   
 	   mouse.sendKeys(Keys.DOWN,Keys.DOWN,Keys.ENTER).build().perform();
 	   
 	   

@@ -139,6 +139,7 @@ public class RegressionSuite2 {
 	    
 	    snapshot.programSummaryInput("TEST TEST");
 	  
+	    Thread.sleep(4000);
 	  editOpportunityPage.headerSaveButton();
 	  
 	  System.out.println("Save Button Clicked");

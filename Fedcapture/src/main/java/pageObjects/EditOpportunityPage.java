@@ -23,6 +23,18 @@ public class EditOpportunityPage {
 
 	WebDriver driver;
 	
+	@SuppressWarnings("serial")
+	class AlsCustomException extends Exception
+	{
+	  public AlsCustomException(String message)
+	  {
+	    super(message);
+	  }
+	}
+	
+	
+	
+	
 	By knowledgetocustomer = By.xpath("//input[@name='Knowledge_of_Customer__c']"); 
 	
 	By name = By.xpath("//input[@id='input-4']");
@@ -70,7 +82,7 @@ public class EditOpportunityPage {
 	
 	By testingtab= By.xpath("//a[@data-firsttab='Testing']");
 	
-	
+	By snapshotTab= By.xpath("//a[@data-firsttab='Snapshot']");
 	
 	public  EditOpportunityPage(WebDriver driver) {
 	
@@ -263,6 +275,30 @@ public class EditOpportunityPage {
 	  
   }
 	
+  
+  public void snapshotTabVerify() throws Exception {
+	  
+	 
+		  
+		 boolean size= driver.findElements(snapshotTab).isEmpty();
+		 
+	     if(size==true) {
+	    	 
+	      System.out.println("Tab not visible-----Success");
+		      
+	   	  System.out.println("Verified successfully");
+	   	   
+	     }
+		 
+	     else{
+	    	 
+	    	 throw new AlsCustomException("Element Present Fail");
+	    	 
+	     }
+	  
+	  
+	  
+  }
   
   public void testingTabVerify() {
 	  

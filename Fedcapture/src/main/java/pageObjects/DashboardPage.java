@@ -13,6 +13,7 @@ public class DashboardPage {
 	WebDriver driver;
 	
 	
+	
 	By appLauncher = By.xpath("//div[@class='tooltipTrigger tooltip-trigger uiTooltip']/div[@class='slds-icon-waffle']");
 	
 	By home = By.xpath("//li[@class='tabItem slds-context-bar__item borderRight slds-is-active active hideAnimation  oneConsoleTabItem']/a[@title='Home']");
@@ -24,6 +25,10 @@ public class DashboardPage {
 	By searchbox = By.xpath("//input[@placeholder='Search apps or items...']");
 	
 	By custopp = By.xpath("//a[@title='Customize Opp Layout']//mark");
+	
+	By custTab= By.xpath("//mark[text()='Customize GovCon Suite Tabs']");
+	
+	
 	
 			
 	public DashboardPage(WebDriver driver) {
@@ -48,13 +53,11 @@ public class DashboardPage {
 	 
 	
 	public void searchInput(String input) {
-		
-		
+			
 		
 	    driver.findElement(searchbox).sendKeys(input);
 	    
-	    
-				
+	  			
 	}
 	
 	
@@ -65,6 +68,12 @@ public class DashboardPage {
 		
 	}
 	
+	
+	public void custGovConSuiteTab() {
+		
+		driver.findElement(custTab).click();
+		
+	}
 	
 	
 	

@@ -139,7 +139,7 @@ public class ChangeRecordType {
 		
 	  
 	   
-	   Thread.sleep(2000);
+	   Thread.sleep(4000);
 		/*
 		 * JavascriptExecutor jse2= (JavascriptExecutor)driver;
 		 * jse2.executeScript("window.scrollBy(0,-550)", "");

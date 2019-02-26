@@ -11,20 +11,27 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import pageObjects.AppLauncherPage;
+import pageObjects.CustomizeGovConSuiteTabPage;
 import pageObjects.CustomizeOppLayoutPage;
 import pageObjects.DashboardPage;
 import pageObjects.EditOpportunityPage;
+
 import pageObjects.HomePage;
 import pageObjects.LoginPage;
 import pageObjects.NewOpprtunityPage;
 import pageObjects.OpportunityPage;
 import pageObjects.SnapshotPage;
 
-public class CustomizeOpp {
+public class CustomizeOppLayout {
 
-	
+
 	public final String driverPath = "F://chromedriver/";
 	public WebDriver driver;
+	
+	
+	
+	
+	
 	
 	//----------------Page Objects ----------
 	
@@ -37,6 +44,7 @@ public class CustomizeOpp {
 	SnapshotPage snapshot;
 	CustomizeOppLayoutPage customopplayout;
 	EditOpportunityPage editOppPage;
+	CustomizeGovConSuiteTabPage custGovConLayout;
 	
 	String baseurl = "http://login.salesforce.com/";
 	// LoginPage objlogin;
@@ -65,11 +73,11 @@ public class CustomizeOpp {
 		
 	}
 
+
 	
-	
-	
+
 	@Test(priority = 1)
-    public void customizeOppAddTab() throws InterruptedException{
+    public void customizeOppAddTab() throws Exception{
 		
 		login = new LoginPage(driver);
 		dashboard = new DashboardPage(driver);
@@ -80,6 +88,8 @@ public class CustomizeOpp {
 		editOppPage = new EditOpportunityPage(driver);
 		snapshot =new SnapshotPage(driver);
 		customopplayout = new CustomizeOppLayoutPage(driver);
+		custGovConLayout = new CustomizeGovConSuiteTabPage(driver);
+		
 		
 		
 		login.usernameInput();
@@ -94,65 +104,27 @@ public class CustomizeOpp {
 		Thread.sleep(6000);
 		
 	
-	    dashboard.searchInput("Customize Opp Layout");
+	    dashboard.searchInput("Customize GovCon Suite Tabs");
 	    
 	    Thread.sleep(3000);
-	    dashboard.custOppLayoutClick();
+	    dashboard.custGovConSuiteTab();
 	    
 	    
 	    Thread.sleep(8000);
 	    
 		System.out.println("Timeout over");
 		
-		
-	    customopplayout.recordtypeSelect();
-	    
-	    customopplayout.addTabClick();
-	    
-	    Thread.sleep(2000);
-	    customopplayout.addTabdetails("Testing");
-	    
-	    Thread.sleep(2000);
-	    JavascriptExecutor jse2= (JavascriptExecutor)driver;
-		  jse2.executeScript("window.scrollBy(0,300)", "");
-	    
-		  Thread.sleep(2000);
-	    customopplayout.addSectionClick();
+		Thread.sleep(3000);
+	    custGovConLayout.recordtypeSelect();
+	    Thread.sleep(3000);
+	   
+	    custGovConLayout.dragAndDrop();
 	    
 	    Thread.sleep(3000);
+	    custGovConLayout.clickSave();
 	    
-	    customopplayout.sectionlabelInput("My Section");
-	    
-	    
-	    //driver.getCurrentUrl();
-	    
-	    Thread.sleep(2000);
-	    
-	    customopplayout.addField();
-	    
-	    customopplayout.addFieldPopup("Name");
-	    
-	    
-	    Thread.sleep(6000);
-	    customopplayout.addField();
-	    
-	    customopplayout.addFieldPopup("Amount");
-	
-	    
-	    Thread.sleep(3000);
-	    jse2.executeScript("window.scrollBy(300,0)", "");
-	    Thread.sleep(3000);
-	    customopplayout.saveClick();
 	    Thread.sleep(9000);
 	    
-	}   
-	 
-	
-	
-	@Test(priority = 2)
-	public void verifyandDeleteTab() throws InterruptedException {
-	    
-		
 	    driver.navigate().to("https://fedcapture-packaging-dev-ed.lightning.force.com/lightning/o/Opportunity/list?filterName=Recent");
 	    
 	    
@@ -164,37 +136,40 @@ public class CustomizeOpp {
 	    JavascriptExecutor jse2 = (JavascriptExecutor)driver;
 	    jse2.executeScript("window.scrollBy(0,300)", "");
 	    
+	    
 	    Thread.sleep(3500);
-	    editOppPage.testingTabVerify();
 	    
-	    Thread.sleep(3000);
-	    System.out.println("Verified successfully");
+	    //editOppPage.testingTabVerify();
 	    
-	    //home.opportunitiesClick();
+	    editOppPage.snapshotTabVerify();
 	    
-	    driver.navigate().to("https://fedcapture-packaging-dev-ed.lightning.force.com/lightning/n/FedCapture__Customize_Opp_Layout");
-	 
-	    Thread.sleep(5000);
-	    //dashboard.custOppLayoutClick();
-	    
-	    customopplayout.recordtypeSelect();
-	    
-	    Thread.sleep(4000);
-	    customopplayout.deleteTabClick();
-	    
-	    System.out.println("Success");
+	    driver.navigate().to("https://fedcapture-packaging-dev-ed.lightning.force.com/lightning/n/FedCapture__Customize_GovCon_Suite_Tabs");
 	    
 	    
 	    
-	}
-	
-	
-	
-	
-	
-	
-	
+	    Thread.sleep(8000);
+	    
+		System.out.println("Timeout over");
 		
+		
+	    custGovConLayout.recordtypeSelect();
+	    Thread.sleep(3000);
+	   
+	    
+	    custGovConLayout.revDragAndDrop();
+	    
+	    
+	    custGovConLayout.clickSave();
+	    
+	    
+	    
+
+	    
+	}   
+	
+	
+	
+	
 	
 	
 	
