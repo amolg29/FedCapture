@@ -1,0 +1,27 @@
+Successfully opened the browser
+done1
+done2
+done3
+done3
+done4
+Clicked on the date field
+January/28/2019
+January 28 2019
+January
+28
+2019
+//table/tbody/tr/td[@aria-disabled='false']/span[text()=28]
+Clicked on the date field
+March/18/2019
+March 18 2019
+March
+18
+2019
+//table/tbody/tr/td[@aria-disabled='false']/span[text()=18]
+Clicked on the date field
+April/12/2019
+April 12 2019
+April
+12
+2019
+//table/tbody/tr/td[@aria-disabled='false']/span[text()=12]

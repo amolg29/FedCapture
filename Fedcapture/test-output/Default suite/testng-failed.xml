@@ -3,17 +3,12 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="regressionPackage.RegressionSuite1">
+      <class name="tests.BudgetHandling">
         <methods>
-          <include name="editButtonTest"/>
-          <include name="markStageComplete"/>
-          <include name="searchOpportunityEdit"/>
-          <include name="afterMethod"/>
-          <include name="editTest"/>
           <include name="setCapabilities"/>
-          <include name="addOpportunityTask"/>
+          <include name="budgetHandle"/>
         </methods>
-      </class> <!-- regressionPackage.RegressionSuite1 -->
+      </class> <!-- tests.BudgetHandling -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
