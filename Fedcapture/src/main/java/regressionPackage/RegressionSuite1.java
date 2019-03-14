@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -25,6 +26,7 @@ import org.testng.asserts.SoftAssert;
 import com.beust.jcommander.Parameter;
 
 import Library.CalenderHandle;
+import Library.TeePrintStream;
 import Library.Utility;
 import pageObjects.AppLauncherPage;
 import pageObjects.ChangeRecordTypePage;
@@ -55,11 +57,17 @@ public class RegressionSuite1 {
 	SnapshotPage snapshot;
 	EditOpportunityPage editOpportunityPage;
 	ChangeRecordTypePage changeRecordType;
-
+	
+	Logger logger;
+     
 	String baseurl = "http://login.salesforce.com/";
 	// LoginPage objlogin;
 	String opportunityPageurl="https://fedcapture-packaging-dev-ed.lightning.force.com/lightning/o/Opportunity/list?filterName=Recent";
 	
+
+	
+	
+
 	SoftAssert softassert = new SoftAssert();
 
 	@BeforeTest
@@ -70,9 +78,14 @@ public class RegressionSuite1 {
 		 * PrintStream out = new PrintStream(new FileOutputStream("F://output.txt"));
 		 * System.setOut(out);
 		 */
+//		   FileOutputStream file = new FileOutputStream("E:\\test.txt");
+//		    TeePrintStream tee = new TeePrintStream(file, System.out);
+//		    System.setOut(tee);
 		
-		
-		
+		 logger = Logger.getRootLogger();
+		 logger.info("TEST");
+		    
+		    
 		if(browser.equalsIgnoreCase("firefox")){
 			//create firefox instance
 			System.setProperty("webdriver.gecko.driver", driverPath2 + "geckodriver.exe");
@@ -138,6 +151,7 @@ public class RegressionSuite1 {
 	@Test(priority = 1)
 	public void addOpportunityTask() throws InterruptedException {
 
+		
 		
 		
 		driver.navigate().to(opportunityPageurl);

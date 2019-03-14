@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="1" guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
-  <test name="ChromeTest1(failed)" parallel="methods">
-    <parameter name="browser" value="chrome"/>
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
+  <test name="Default test(failed)">
     <classes>
       <class name="regressionPackage.RegressionSuite1">
         <methods>
@@ -16,16 +15,5 @@
         </methods>
       </class> <!-- regressionPackage.RegressionSuite1 -->
     </classes>
-  </test> <!-- ChromeTest1(failed) -->
-  <test name="ChromeTest2(failed)" parallel="methods">
-    <parameter name="browser" value="chrome"/>
-    <classes>
-      <class name="regressionPackage.RegressionSuite2">
-        <methods>
-          <include name="changeRecordType"/>
-          <include name="setCapabilities"/>
-        </methods>
-      </class> <!-- regressionPackage.RegressionSuite2 -->
-    </classes>
-  </test> <!-- ChromeTest2(failed) -->
-</suite> <!-- Failed suite [Suite] -->
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->
