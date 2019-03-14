@@ -3,12 +3,17 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="adminFlows.CustomizeOpp">
+      <class name="regressionPackage.RegressionSuite1">
         <methods>
-          <include name="Verify"/>
+          <include name="editButtonTest"/>
+          <include name="markStageComplete"/>
+          <include name="searchOpportunityEdit"/>
+          <include name="afterMethod"/>
+          <include name="editTest"/>
           <include name="setCapabilities"/>
+          <include name="addOpportunityTask"/>
         </methods>
-      </class> <!-- adminFlows.CustomizeOpp -->
+      </class> <!-- regressionPackage.RegressionSuite1 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

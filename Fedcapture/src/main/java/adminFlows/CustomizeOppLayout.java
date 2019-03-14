@@ -32,7 +32,6 @@ public class CustomizeOppLayout {
 	
 	
 	
-	
 	//----------------Page Objects ----------
 	
 	LoginPage login;
