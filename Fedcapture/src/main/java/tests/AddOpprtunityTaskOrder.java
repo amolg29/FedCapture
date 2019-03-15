@@ -23,7 +23,11 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+
 import Library.CalenderHandle;
+import Library.ExtentReportsClass;
 import Library.Utility;
 import net.bytebuddy.description.modifier.Visibility;
 import pageObjects.AppLauncherPage;
@@ -36,7 +40,7 @@ import pageObjects.SnapshotPage;
 
 
 
-public class AddOpprtunityTaskOrder {
+public class AddOpprtunityTaskOrder extends ExtentReportsClass {
 	
 	
 	public final String driverPath = "F://chromedriver/";
@@ -86,6 +90,9 @@ public class AddOpprtunityTaskOrder {
 	
 	@Test(priority = 1)
     public void addOpportunityTask() throws InterruptedException{
+		
+		test = extent.createTest("AddOpportunityTask");
+		
 		
 		login = new LoginPage(driver);
 		dashboard = new DashboardPage(driver);
