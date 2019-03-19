@@ -26,6 +26,7 @@ import org.testng.asserts.SoftAssert;
 import com.beust.jcommander.Parameter;
 
 import Library.CalenderHandle;
+import Library.ExtentReportsClass;
 import Library.TeePrintStream;
 import Library.Utility;
 import pageObjects.AppLauncherPage;
@@ -38,7 +39,7 @@ import pageObjects.NewOpprtunityPage;
 import pageObjects.OpportunityPage;
 import pageObjects.SnapshotPage;
 
-public class RegressionSuite1 {
+public class RegressionSuite1 extends ExtentReportsClass{
 
 	public final String driverPath = "F://chromedriver/";
 	public final String driverPath2 = "F://geckodriver/";
@@ -58,7 +59,7 @@ public class RegressionSuite1 {
 	EditOpportunityPage editOpportunityPage;
 	ChangeRecordTypePage changeRecordType;
 	
-	Logger logger;
+	//Logger logger;
      
 	String baseurl = "http://login.salesforce.com/";
 	// LoginPage objlogin;
@@ -74,16 +75,16 @@ public class RegressionSuite1 {
 	@Parameters("browser")
 	public void setCapabilities(String browser) throws FileNotFoundException, InterruptedException {
 
-		/*
-		 * PrintStream out = new PrintStream(new FileOutputStream("F://output.txt"));
-		 * System.setOut(out);
-		 */
+		
+		  PrintStream out = new PrintStream(new FileOutputStream("F://output.txt"));
+		  System.setOut(out);
+		 
 //		   FileOutputStream file = new FileOutputStream("E:\\test.txt");
 //		    TeePrintStream tee = new TeePrintStream(file, System.out);
 //		    System.setOut(tee);
 		
-		 logger = Logger.getRootLogger();
-		 logger.info("TEST");
+		// logger = Logger.getRootLogger();
+		// logger.info("TEST");
 		    
 		    
 		if(browser.equalsIgnoreCase("firefox")){
@@ -152,7 +153,7 @@ public class RegressionSuite1 {
 	public void addOpportunityTask() throws InterruptedException {
 
 		
-		
+		test = extent.createTest("Add Opportunity-Task");
 		
 		driver.navigate().to(opportunityPageurl);
 
@@ -210,6 +211,8 @@ public class RegressionSuite1 {
 	  
 	  public void editTest() throws InterruptedException {
 	  
+		  
+		  test = extent.createTest("Edit Opportunity");	  
 	  
 	  Thread.sleep(3000);
 	 
@@ -272,7 +275,7 @@ public class RegressionSuite1 {
 	@Test(priority = 3)
 	public void editButtonTest() throws InterruptedException {
 
-		
+		test = extent.createTest("Edit Opportunity - Button");
 
 		driver.navigate().to(opportunityPageurl);
 
@@ -338,8 +341,8 @@ public class RegressionSuite1 {
 	  
 	  public void markStageComplete() throws InterruptedException {
 	  
-   
-	  
+	  test = extent.createTest("Mark Stage Complete");
+		  
       driver.navigate().to(opportunityPageurl);
 	  
 	  opportunityPage.firstOpportunityClick();
@@ -372,7 +375,7 @@ public class RegressionSuite1 {
 	  
 	public void searchOpportunityEdit() throws InterruptedException {
 	  
-	  
+		test = extent.createTest("Search Opportunity Edit");
 		  
 	  driver.navigate().to(opportunityPageurl);
 	  
@@ -451,7 +454,7 @@ public class RegressionSuite1 {
 
 			else if (result.getStatus() == ITestResult.FAILURE) {
 				// Do something here
-				System.out.println("Failed ***********");
+				System.out.println(result.getName()+"Failed ***********");
 				Utility.captureScreenshot(driver, result.getName());
 				// driver.quit();
 
@@ -459,7 +462,7 @@ public class RegressionSuite1 {
 
 			else if (result.getStatus() == ITestResult.SKIP) {
 
-				System.out.println("Skiped***********");
+				System.out.println(result.getName()+"Skiped***********");
 
 			}
 

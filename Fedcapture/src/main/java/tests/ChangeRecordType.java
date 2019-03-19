@@ -20,6 +20,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import Library.ExtentReportsClass;
 import Library.Utility;
 import pageObjects.AppLauncherPage;
 import pageObjects.ChangeRecordTypePage;
@@ -31,7 +32,7 @@ import pageObjects.NewOpprtunityPage;
 import pageObjects.OpportunityPage;
 import pageObjects.SnapshotPage;
 
-public class ChangeRecordType {
+public class ChangeRecordType extends ExtentReportsClass{
 
 
 
@@ -85,6 +86,7 @@ public class ChangeRecordType {
 	
 	public void changeRecordType() throws InterruptedException {
 		
+		test = extent.createTest("ChangeRecordType");
 		
 		login = new LoginPage(driver);
 		dashboard = new DashboardPage(driver);
@@ -118,7 +120,7 @@ public class ChangeRecordType {
 		opportunityPage.firstOpportunityClick();
 	    
 		System.out.println("first opportunity clicked");
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 	    snapshot.dropdownClick();
 	    System.out.println("dropdown opportunity clicked");
 	    Thread.sleep(2000);
@@ -131,7 +133,7 @@ public class ChangeRecordType {
 	    changeRecordType.nextButtonClick();
 	    System.out.println("Next button clicked");
 		
-	    Thread.sleep(8000);
+	    
 	    snapshot.requirementTabClick();
 	    
 	    snapshot.programSummaryInput("TEST TEST");

@@ -1,9 +1,8 @@
-package tests;
+package regressionPackage;
 
 import java.io.FileNotFoundException;
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -11,12 +10,11 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-
-import Library.CalenderHandle2;
 import pageObjects.AppLauncherPage;
 import pageObjects.ChangeRecordTypePage;
 import pageObjects.ContactPage;
 import pageObjects.DashboardPage;
+import pageObjects.DeleteOpportunityPage;
 import pageObjects.EditOpportunityPage;
 import pageObjects.HomePage;
 import pageObjects.LoginPage;
@@ -25,8 +23,9 @@ import pageObjects.NewOpprtunityPage;
 import pageObjects.OpportunityPage;
 import pageObjects.ResourceBudgetPage;
 import pageObjects.SnapshotPage;
+import Library.ExtentReportsClass;
 
-public class BudgetHandling {
+public class RegressionSuiteNew2 extends ExtentReportsClass{
 
 	
 	public final String driverPath = "F://chromedriver/";
@@ -43,13 +42,15 @@ public class BudgetHandling {
 	SnapshotPage snapshot;
 	EditOpportunityPage editOpportunityPage;
 	ChangeRecordTypePage changeRecordType;
-    ResourceBudgetPage resourceBudget;
-    
+	ResourceBudgetPage resourceBudget;
+	ContactPage contact;
+	NewContactPage newContact;
+	DeleteOpportunityPage deleteopportunity;
 	
 	
-    
-    
 	String baseurl = "http://login.salesforce.com/";
+	String opportunityPageurl="https://fedcapture-packaging-dev-ed.lightning.force.com/lightning/o/Opportunity/list?filterName=Recent";
+	
 	// LoginPage objlogin;
 	SoftAssert softassert = new SoftAssert();
 
@@ -79,14 +80,6 @@ public class BudgetHandling {
 		driver.manage().window().maximize();
 		
 		
-		
-
-	}
-
-	
-	@Test (priority= 1)
-	public void budgetHandle() throws InterruptedException {
-		
 		login = new LoginPage(driver);
 		dashboard = new DashboardPage(driver);
 		applaunch = new AppLauncherPage(driver);
@@ -96,7 +89,7 @@ public class BudgetHandling {
 		snapshot = new SnapshotPage(driver);
 		editOpportunityPage = new EditOpportunityPage(driver);
         changeRecordType = new ChangeRecordTypePage(driver);
-		resourceBudget = new ResourceBudgetPage(driver);
+		deleteopportunity= new DeleteOpportunityPage(driver);
 		
 		login.usernameInput();
 		System.out.println("done1");
@@ -104,71 +97,45 @@ public class BudgetHandling {
 		System.out.println("done2");
 		login.signInClick();
 
-		   dashboard.appLauncherClick();
-			System.out.println("done3");
-			Thread.sleep(6000);
-			applaunch.fedcaptureClick();
-			
-			System.out.println("done4");
-		
-		
-		home.opportunitiesClick();
-		
-		opportunityPage.firstOpportunityClick();
-		Thread.sleep(10000);
-		
-		
-		
-		
-		snapshot.resourceBudgetClick();
-		
-		Thread.sleep(5000);
-		
-		resourceBudget.startDateInput();
-		CalenderHandle2.calenderHandleDate(driver, "02/19/2019");
-		
-		Thread.sleep(4000);
-		
-		resourceBudget.endDateInput();
-		CalenderHandle2.calenderHandleDate(driver, "03/28/2019");
-		
-		Thread.sleep(4000);
-		resourceBudget.goButtonClick();
-		
-		Thread.sleep(4000);
-		resourceBudget.addRowClick();
-		
-		Thread.sleep(4000);
-		resourceBudget.labourCategoryInput();
-		Thread.sleep(4000);
-		
-		resourceBudget.employeeInput();
-		Thread.sleep(4000);
-		
-		resourceBudget.Add();
-		Thread.sleep(4000);
-		
-		resourceBudget.row1Input("18");
+		dashboard.appLauncherClick();
+		System.out.println("done3");
+		Thread.sleep(6000);
+		applaunch.fedcaptureClick();
+		System.out.println("done4");
 		Thread.sleep(3000);
-		
-		
-		resourceBudget.savefirstClick();
-		Thread.sleep(4000);
-		driver.switchTo().alert().accept();
-		
-		Thread.sleep(2000);
-		JavascriptExecutor jse1 = (JavascriptExecutor) driver;
-		jse1.executeScript("window.scrollBy(0,500)");
 
+	}
+
+	@Test (priority = 1)
+	public void deleteOpportunity() throws InterruptedException {
+		
+	
+		
+		driver.get(driver.getCurrentUrl());	  
+
+		  Thread.sleep(3000);
+		  
+		driver.navigate().to(opportunityPageurl);
+		  
+		opportunityPage.firstOpportunityClick();
+	    
+		System.out.println("first opportunity clicked");
+		
 		Thread.sleep(2000);
-		resourceBudget.saveExpenseClick();
+	    
+		editOpportunityPage.deleteButtonClick();
+		
+	    System.out.println("Clicked on delete button");
+	
+	    Thread.sleep(2000);
+		deleteopportunity.deleteConfirm();
+		
+	    System.out.println("Confirmed delete");
+	
 		
 	}
-	
-	
-	
-	
 
+	
 	
 	
 }

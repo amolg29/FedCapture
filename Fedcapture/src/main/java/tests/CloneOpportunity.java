@@ -19,6 +19,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import Library.ExtentReportsClass;
 import Library.Utility;
 import pageObjects.AppLauncherPage;
 import pageObjects.ChangeRecordTypePage;
@@ -30,7 +31,7 @@ import pageObjects.NewOpprtunityPage;
 import pageObjects.OpportunityPage;
 import pageObjects.SnapshotPage;
 
-public class CloneOpportunity {
+public class CloneOpportunity extends ExtentReportsClass {
 
 	
 
@@ -86,6 +87,7 @@ public class CloneOpportunity {
 	
 	public void cloneOpportunity() throws InterruptedException {
 		
+		test = extent.createTest("CloneOpportunity");
 		
 		login = new LoginPage(driver);
 		dashboard = new DashboardPage(driver);

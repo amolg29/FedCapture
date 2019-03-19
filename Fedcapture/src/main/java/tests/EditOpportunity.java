@@ -22,6 +22,7 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import Library.CalenderHandle;
+import Library.ExtentReportsClass;
 import Library.Utility;
 import pageObjects.AppLauncherPage;
 import pageObjects.DashboardPage;
@@ -32,7 +33,7 @@ import pageObjects.NewOpprtunityPage;
 import pageObjects.OpportunityPage;
 import pageObjects.SnapshotPage;
 
-public class EditOpportunity {
+public class EditOpportunity extends ExtentReportsClass{
 	
 	
 	public final String driverPath = "F://chromedriver/";
@@ -87,6 +88,9 @@ public class EditOpportunity {
 		@Test(priority = 1)
 		
 		public void editTest() throws InterruptedException {
+			
+			test = extent.createTest("EditOpportunity");
+			
 		login = new LoginPage(driver);
 		dashboard = new DashboardPage(driver);
 		applaunch = new AppLauncherPage(driver);

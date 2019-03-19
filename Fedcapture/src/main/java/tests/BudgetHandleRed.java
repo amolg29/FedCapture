@@ -79,7 +79,7 @@ public class BudgetHandleRed {
 
 	
 	@Test (priority= 1)
-	public void budgetHandle() throws InterruptedException {
+	public void budgetHandleRed() throws InterruptedException {
 		
 		login = new LoginPage(driver);
 		dashboard = new DashboardPage(driver);

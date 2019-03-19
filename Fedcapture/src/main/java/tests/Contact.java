@@ -75,7 +75,7 @@ public class Contact {
 
 	
 	@Test(priority = 2)
-    public void login() throws InterruptedException{
+    public void contact() throws InterruptedException{
 	
 		
 		login = new LoginPage(driver);

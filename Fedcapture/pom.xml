@@ -14,9 +14,14 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.18.1</version>
 				<configuration>
+	
+                <useFile>false</useFile>
+    
+				<testErrorIgnore>true</testErrorIgnore>   
+                <testFailureIgnore>true</testFailureIgnore>
 					<suiteXmlFiles>
 						<!-- TestNG suite XML files -->
-						<suiteXmlFile>testng.xml</suiteXmlFile>
+						<suiteXmlFile>testng2.xml</suiteXmlFile>
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>
@@ -36,7 +41,7 @@
 
 						<configuration>
 							<!-- From Email address -->
-							<from>amolgaymukhe123@gmail.com</from>
+							<from>amol.gaymukhe@technomile.com</from>
 
 							<!-- Email subject -->
 							<subject>Test Automation Report</subject>
@@ -52,13 +57,14 @@
 							<mailAltConfig>true</mailAltConfig>
 
 							<!-- Email Authentication(USername and Password) -->
-							<mailuser>amolgaymukhe123@gmail.com</mailuser>
-							<mailpassword>Mothernature@123</mailpassword>
+							<mailuser>amol.gaymukhe@technomile.com</mailuser>
+							<mailpassword>Dev@20121</mailpassword>
 
 							<receivers>
 								<!-- To Email address -->
 								<receiver>amolgaymukhe123@gmail.com</receiver>
 								<receiver>amol.gaymukhe@technomile.com</receiver>
+								<receiver>smita@technomile.com</receiver>
 							</receivers>
 
 							<fileSets>
@@ -67,7 +73,7 @@
 									<directory>C://Users//TECHNO878//git//FedCapture//Fedcapture//test-output</directory>
 									<includes>
 										<!-- Report file name -->
-										<include>emailable-report.html</include>
+										<include>MyOwnReport.html</include>
 									</includes>
 									<!-- Use Regular Expressions like **/*.html if you want all the 
 										html files to send -->
@@ -176,8 +182,6 @@
 		</dependency>
 
 	</dependencies>
-
-
 
 
 

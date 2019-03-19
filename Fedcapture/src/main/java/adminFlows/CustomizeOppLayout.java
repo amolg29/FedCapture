@@ -127,7 +127,9 @@ public class CustomizeOppLayout {
 	    driver.navigate().to("https://fedcapture-packaging-dev-ed.lightning.force.com/lightning/o/Opportunity/list?filterName=Recent");
 	    
 	    
-	    home.searchInput("TestToSucceed");
+	    opportunityPage.searchBoxClick("TestToSucceed");
+	    
+	    opportunityPage.firstOpportunityClick();
 	    
 	    
 	    Thread.sleep(8000);

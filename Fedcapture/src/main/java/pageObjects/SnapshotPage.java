@@ -65,7 +65,7 @@ public class SnapshotPage {
 	
 	By saveEdit = By.xpath("//div[@class='slds-modal__footer_custom']/button[@class='slds-button slds-button_brand ']");
 	
-	By dropdown=By.xpath("//a[@role='button' and @title='Show 7 more actions']");
+	By dropdown=By.xpath("//a[@role='button' and @title='Show 6 more actions']");
 	
 	By changeRecordTypeButton = By.xpath("//a[@title='Change Record Type']");
 	
@@ -221,7 +221,10 @@ public class SnapshotPage {
 	
     public void requirementTabClick() {
     	
-    	
+WebDriverWait wait =new WebDriverWait(driver, 10);
+		
+		wait.until(ExpectedConditions.visibilityOfElementLocated(requirementTab));
+		
     	
     	driver.findElement(requirementTab).click();
     	

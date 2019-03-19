@@ -31,7 +31,7 @@ import pageObjects.NewOpprtunityPage;
 import pageObjects.OpportunityPage;
 import pageObjects.SnapshotPage;
 
-public class RegressionSuite1M {
+public class RegressionSuiteM1 {
 
 	public final String driverPath2 = "F://geckodriver/";
 

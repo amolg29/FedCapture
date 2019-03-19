@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import org.testng.xml.dom.Tag;
 
+import Library.ExtentReportsClass;
 import pageObjects.AppLauncherPage;
 import pageObjects.ChangeRecordTypePage;
 import pageObjects.DashboardPage;
@@ -22,7 +23,7 @@ import pageObjects.NewOpprtunityPage;
 import pageObjects.OpportunityPage;
 import pageObjects.SnapshotPage;
 
-public class DeleteOpportunity {
+public class DeleteOpportunity extends ExtentReportsClass{
 	
 	
 	
@@ -79,6 +80,8 @@ public class DeleteOpportunity {
 	
 	@Test (priority = 1)
 	public void deleteOpportunity() throws InterruptedException {
+		
+		test = extent.createTest("DeleteOpportunity");
 		
 		login = new LoginPage(driver);
 		dashboard = new DashboardPage(driver);

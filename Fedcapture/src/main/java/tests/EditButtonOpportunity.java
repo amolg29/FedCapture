@@ -21,6 +21,7 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import Library.CalenderHandle;
+import Library.ExtentReportsClass;
 import Library.Utility;
 import pageObjects.AppLauncherPage;
 import pageObjects.DashboardPage;
@@ -31,7 +32,7 @@ import pageObjects.NewOpprtunityPage;
 import pageObjects.OpportunityPage;
 import pageObjects.SnapshotPage;
 
-public class EditButtonOpportunity {
+public class EditButtonOpportunity extends ExtentReportsClass {
 
 
 
@@ -83,11 +84,12 @@ public class EditButtonOpportunity {
 	
 	
 	
-	
 		@Test(priority = 1)
 		
 		public void editButtonTest() throws InterruptedException {
 		
+		test = extent.createTest("EditButtonTest");	
+			
 			
 		login = new LoginPage(driver);
 		dashboard = new DashboardPage(driver);

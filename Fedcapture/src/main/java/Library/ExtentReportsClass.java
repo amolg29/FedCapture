@@ -61,6 +61,7 @@ public class ExtentReportsClass {
 	        }
 	    }
 	     
+	    
 	    @AfterSuite
 	    public void tearDown()
 	    {

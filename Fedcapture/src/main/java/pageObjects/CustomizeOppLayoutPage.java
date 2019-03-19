@@ -143,7 +143,7 @@ public class CustomizeOppLayoutPage {
 
 	public void addSectionClick() {
 		
-List<WebElement> myElements=driver.findElements(addSection);
+		List<WebElement> myElements=driver.findElements(addSection);
 		
 		System.out.println(myElements.size());
 		
@@ -179,7 +179,7 @@ List<WebElement> myElements=driver.findElements(addSection);
 		
 		//driver.navigate().to("https://fedcapture-packaging-dev-ed.lightning.force.com/lightning/n/FedCapture__Customize_Opp_Layout");
 		
-List<WebElement> myElements=driver.findElements(addField);
+		List<WebElement> myElements=driver.findElements(addField);
 		
 		System.out.println(myElements.size());
 		

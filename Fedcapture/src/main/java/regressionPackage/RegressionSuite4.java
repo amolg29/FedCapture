@@ -1,4 +1,4 @@
-package tests;
+package regressionPackage;
 
 import java.io.FileNotFoundException;
 import java.util.concurrent.TimeUnit;
@@ -11,12 +11,13 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-
 import Library.CalenderHandle2;
+import Library.ExtentReportsClass;
 import pageObjects.AppLauncherPage;
 import pageObjects.ChangeRecordTypePage;
 import pageObjects.ContactPage;
 import pageObjects.DashboardPage;
+import pageObjects.DeleteOpportunityPage;
 import pageObjects.EditOpportunityPage;
 import pageObjects.HomePage;
 import pageObjects.LoginPage;
@@ -26,12 +27,12 @@ import pageObjects.OpportunityPage;
 import pageObjects.ResourceBudgetPage;
 import pageObjects.SnapshotPage;
 
-public class BudgetHandling {
+public class RegressionSuite4 extends ExtentReportsClass{
 
-	
 	public final String driverPath = "F://chromedriver/";
 	public WebDriver driver;
-
+    
+	
 	// ----------------Page Objects ----------
 
 	LoginPage login;
@@ -43,13 +44,15 @@ public class BudgetHandling {
 	SnapshotPage snapshot;
 	EditOpportunityPage editOpportunityPage;
 	ChangeRecordTypePage changeRecordType;
-    ResourceBudgetPage resourceBudget;
-    
+	ResourceBudgetPage resourceBudget;
+	ContactPage contact;
+	NewContactPage newContact;
+	DeleteOpportunityPage deleteopportunity;
 	
 	
-    
-    
 	String baseurl = "http://login.salesforce.com/";
+	String opportunityPageurl="https://fedcapture-packaging-dev-ed.lightning.force.com/lightning/o/Opportunity/list?filterName=Recent";
+	
 	// LoginPage objlogin;
 	SoftAssert softassert = new SoftAssert();
 
@@ -79,14 +82,6 @@ public class BudgetHandling {
 		driver.manage().window().maximize();
 		
 		
-		
-
-	}
-
-	
-	@Test (priority= 1)
-	public void budgetHandle() throws InterruptedException {
-		
 		login = new LoginPage(driver);
 		dashboard = new DashboardPage(driver);
 		applaunch = new AppLauncherPage(driver);
@@ -96,41 +91,49 @@ public class BudgetHandling {
 		snapshot = new SnapshotPage(driver);
 		editOpportunityPage = new EditOpportunityPage(driver);
         changeRecordType = new ChangeRecordTypePage(driver);
-		resourceBudget = new ResourceBudgetPage(driver);
-		
+        deleteopportunity= new DeleteOpportunityPage(driver);
+		resourceBudget =new ResourceBudgetPage(driver);
+        
 		login.usernameInput();
 		System.out.println("done1");
 		login.passwordInput();
 		System.out.println("done2");
 		login.signInClick();
 
-		   dashboard.appLauncherClick();
-			System.out.println("done3");
-			Thread.sleep(6000);
-			applaunch.fedcaptureClick();
-			
-			System.out.println("done4");
+		dashboard.appLauncherClick();
+		System.out.println("done3");
+		Thread.sleep(6000);
+		applaunch.fedcaptureClick();
+		System.out.println("done4");
+		Thread.sleep(3000);
+
+	}
+	
+	
+	@Test (priority= 1)
+	public void budgetHandle() throws InterruptedException {
 		
-		
-		home.opportunitiesClick();
-		
+      test= extent.createTest("Budget Handle Positive");
+	  Thread.sleep(3000);
+	  
+	  driver.navigate().to(opportunityPageurl);
+	  
+     	
 		opportunityPage.firstOpportunityClick();
 		Thread.sleep(10000);
 		
-		
-		
-		
+	
 		snapshot.resourceBudgetClick();
 		
 		Thread.sleep(5000);
 		
 		resourceBudget.startDateInput();
-		CalenderHandle2.calenderHandleDate(driver, "02/19/2019");
+		CalenderHandle2.calenderHandleDate(driver, "03/18/2019");
 		
 		Thread.sleep(4000);
 		
 		resourceBudget.endDateInput();
-		CalenderHandle2.calenderHandleDate(driver, "03/28/2019");
+		CalenderHandle2.calenderHandleDate(driver, "03/23/2019");
 		
 		Thread.sleep(4000);
 		resourceBudget.goButtonClick();
@@ -164,10 +167,103 @@ public class BudgetHandling {
 		resourceBudget.saveExpenseClick();
 		
 	}
+
+
 	
+	@Test (priority= 2)
+	public void budgetHandleRed() throws InterruptedException {
+		
+		   test= extent.createTest("Budget Handle OverWork");
+		  driver.get(driver.getCurrentUrl());	  
+
+		  Thread.sleep(3000);
+		  
+		  driver.navigate().to(opportunityPageurl);
+		
+		
+		opportunityPage.firstOpportunityClick();
+		Thread.sleep(10000);
+		
 	
+		snapshot.resourceBudgetClick();
+		
+		Thread.sleep(5000);
+		
+		resourceBudget.startDateInput();
+		CalenderHandle2.calenderHandleDate(driver, "03/19/2019");
+		
+		Thread.sleep(4000);
+		
+		resourceBudget.endDateInput();
+		CalenderHandle2.calenderHandleDate(driver, "03/26/2019");
+		
+		Thread.sleep(4000);
+		resourceBudget.goButtonClick();
+		
+		Thread.sleep(4000);
+		resourceBudget.addRowClick();
+		
+		Thread.sleep(4000);
+		resourceBudget.labourCategoryInput();
+		Thread.sleep(4000);
+		
+		resourceBudget.employeeInput();
+		Thread.sleep(4000);
+		
+		resourceBudget.Add();
+		Thread.sleep(4000);
+		
+		resourceBudget.row1Input("48");
+		Thread.sleep(3000);
+		
+	    //resourceBudget.colorcheck();
+		
+		
+		resourceBudget.row2Input("48");
+		Thread.sleep(3000);
+		
+		
+		
+		
+		resourceBudget.savefirstClick();
+		Thread.sleep(4000);
+		driver.switchTo().alert().accept();
+		
+		resourceBudget.colorcheck();
+		
+		
+		Thread.sleep(2000);
+		JavascriptExecutor jse1 = (JavascriptExecutor) driver;
+		jse1.executeScript("window.scrollBy(0,500)");
+
+		Thread.sleep(2000);
+		resourceBudget.saveExpenseClick();
+		
+	}
+
 	
+	@Test(priority = 3)
+    public void contactAdd() throws InterruptedException{
 	
+		   test= extent.createTest("Contact Add");
+		  driver.get(driver.getCurrentUrl());	  
+
+		  Thread.sleep(3000);
+		  
+		  driver.navigate().to(opportunityPageurl);
+	
+	    home.contactClick();
+	    
+	    contact.newContactClick();
+	    
+	    
+	    newContact.lastNameInput("TESTSCRIPT");
+	    
+	    newContact.saveButtonClick();
+	    
+	    Thread.sleep(3000);
+		
+	}
 
 	
 	

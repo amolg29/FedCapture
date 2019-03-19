@@ -28,7 +28,7 @@ public class DashboardPage {
 	
 	By custTab= By.xpath("//mark[text()='Customize GovCon Suite Tabs']");
 	
-	
+	By applauncherafter= By.xpath("//div[@class='slds-context-bar__primary navLeft']//button");
 	
 			
 	public DashboardPage(WebDriver driver) {
@@ -75,6 +75,12 @@ public class DashboardPage {
 		
 	}
 	
+	
+	
+	public void applauncherAfterClick() {
+		
+		driver.findElement(applauncherafter).click();
+	}
 	
 	
 }

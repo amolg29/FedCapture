@@ -19,6 +19,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import Library.ExtentReportsClass;
 import Library.Utility;
 import pageObjects.AppLauncherPage;
 import pageObjects.DashboardPage;
@@ -28,7 +29,7 @@ import pageObjects.LoginPage;
 import pageObjects.OpportunityPage;
 import pageObjects.SnapshotPage;
 
-public class MarkStageComplete {
+public class MarkStageComplete extends ExtentReportsClass{
     
 	
 	public final String driverPath = "F://chromedriver/";
@@ -77,7 +78,10 @@ public class MarkStageComplete {
 	
 	public void markStageComplete() throws InterruptedException{
 		
-		login = new LoginPage(driver);
+		
+		test = extent.createTest("MarkStageComplete");
+		
+	    login = new LoginPage(driver);
 		dashboard = new DashboardPage(driver);
 		applaunch = new AppLauncherPage(driver);
 		home= new HomePage(driver);

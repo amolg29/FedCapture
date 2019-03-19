@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="1" guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
-  <test name="ChromeTest2(failed)" parallel="methods">
-    <parameter name="browser" value="chrome"/>
+<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
+  <test name="Default test(failed)">
     <classes>
-      <class name="regressionPackage.RegressionSuite2">
+      <class name="regressionPackage.RegressionSuite3">
         <methods>
-          <include name="changeRecordType"/>
-          <include name="cloneOpportunity"/>
+          <include name="customizeOppLayoutAddTab"/>
           <include name="setCapabilities"/>
         </methods>
-      </class> <!-- regressionPackage.RegressionSuite2 -->
+      </class> <!-- regressionPackage.RegressionSuite3 -->
     </classes>
-  </test> <!-- ChromeTest2(failed) -->
-</suite> <!-- Failed suite [Suite] -->
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

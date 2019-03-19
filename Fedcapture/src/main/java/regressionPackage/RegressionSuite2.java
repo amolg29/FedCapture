@@ -12,25 +12,36 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import Library.CalenderHandle;
+import Library.CalenderHandle2;
+import Library.ExtentReportsClass;
+import Library.Utility;
 import pageObjects.AppLauncherPage;
 import pageObjects.ChangeRecordTypePage;
+import pageObjects.ContactPage;
 import pageObjects.DashboardPage;
+import pageObjects.DeleteOpportunityPage;
 import pageObjects.EditOpportunityPage;
 import pageObjects.HomePage;
 import pageObjects.LoginPage;
+import pageObjects.NewContactPage;
 import pageObjects.NewOpprtunityPage;
 import pageObjects.OpportunityPage;
+import pageObjects.ResourceBudgetPage;
 import pageObjects.SnapshotPage;
 
-public class RegressionSuite2 {
+public class RegressionSuite2 extends ExtentReportsClass {
 	
 	public final String driverPath = "F://chromedriver/";
 	public WebDriver driver;
-
+    
+	
 	// ----------------Page Objects ----------
 
 	LoginPage login;
@@ -42,7 +53,12 @@ public class RegressionSuite2 {
 	SnapshotPage snapshot;
 	EditOpportunityPage editOpportunityPage;
 	ChangeRecordTypePage changeRecordType;
-
+	ResourceBudgetPage resourceBudget;
+	ContactPage contact;
+	NewContactPage newContact;
+	DeleteOpportunityPage deleteopportunity;
+	
+	
 	String baseurl = "http://login.salesforce.com/";
 	String opportunityPageurl="https://fedcapture-packaging-dev-ed.lightning.force.com/lightning/o/Opportunity/list?filterName=Recent";
 	
@@ -84,8 +100,9 @@ public class RegressionSuite2 {
 		snapshot = new SnapshotPage(driver);
 		editOpportunityPage = new EditOpportunityPage(driver);
         changeRecordType = new ChangeRecordTypePage(driver);
-		
-		
+        deleteopportunity= new DeleteOpportunityPage(driver);
+		resourceBudget =new ResourceBudgetPage(driver);
+        
 		login.usernameInput();
 		System.out.println("done1");
 		login.passwordInput();
@@ -101,109 +118,341 @@ public class RegressionSuite2 {
 
 	}
 
+	
 	 @Test(priority = 1)
 	  
 	  public void changeRecordType() throws InterruptedException {
 	  
-		  driver.get(driver.getCurrentUrl());	  
+		 test = extent.createTest("Change Record Type");
+		 
+		 
+		   
 
 		  Thread.sleep(3000);
 		  
 		  driver.navigate().to(opportunityPageurl);
 	  
-	  
-	 opportunityPage.firstOpportunityClick();
-	  
-	  System.out.println("first opportunity clicked");
-	  Thread.sleep(5000);
-	  
-	  snapshot.dropdownClick(); 
-	  
-	  System.out.println("dropdown opportunity clicked");
-	  Thread.sleep(4000);
-	  
-	  snapshot.changeRecordTypeButtonClick();
-	  System.out.println("RecordType button clicked"); 
-	  Thread.sleep(4000);
-	  
-	  changeRecordType.nextButtonClick();
-	  System.out.println("Next button clicked");
-	  
-	  Thread.sleep(7000);
-	  
-	  
-	   snapshot.requirementTabClick();
-	   Thread.sleep(3000);
-	   
-	   System.out.println("Clicked on tab");
-	    
-	    snapshot.programSummaryInput("TEST TEST");
-	  
-	    Thread.sleep(4000);
-	  editOpportunityPage.headerSaveButton();
-	  
-	  System.out.println("Save Button Clicked");
-	  
-	  WebDriverWait wait1 = new WebDriverWait(driver, 10);
-	  wait1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath( "//nav[@class='entityNameTitle']"))); 
-	  WebElement rfp = driver.findElement(By.xpath("//nav[@class='entityNameTitle']")); 
-	  String actual = rfp.getText(); 
-	  String expected = "Opportunity";
-	 
-	  Assert.assertEquals(actual, expected);
-	
-	  Thread.sleep(3000); // driver.quit(); 
-	  }
+			opportunityPage.firstOpportunityClick();
+		    
+			System.out.println("first opportunity clicked");
+			Thread.sleep(3000);
+		    snapshot.dropdownClick();
+		    System.out.println("dropdown opportunity clicked");
+		    Thread.sleep(2000);
+		    
+		    snapshot.changeRecordTypeButtonClick();
+		    System.out.println("RecordType button clicked");
+		    Thread.sleep(2000);
+		    
+		    
+		    changeRecordType.nextButtonClick();
+		    System.out.println("Next button clicked");
+			
+		    Thread.sleep(8000);
+		    snapshot.requirementTabClick();
+		    
+		    snapshot.programSummaryInput("TEST TEST");
+		    
+			
+		  
+		   
+		   Thread.sleep(4000);
+			/*
+			 * JavascriptExecutor jse2= (JavascriptExecutor)driver;
+			 * jse2.executeScript("window.scrollBy(0,-550)", "");
+			 */
+		  
+			  
+			  editOpportunityPage.headerSaveButton();
+			  
+			 System.out.println("Save Button Clicked"); 
+			  
+			  WebDriverWait wait1 =new WebDriverWait(driver, 10);
+			  wait1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//nav[@class='entityNameTitle']//span")));
+			  WebElement rfp=driver.findElement(By.xpath("//nav[@class='entityNameTitle']//span")); 
+			  String actual= rfp.getText(); String expected="Opportunity";
+			  
+			  
+			  Assert.assertEquals(actual, expected);
+			
+	 }
 	  
 	  
 	 @Test(priority = 2)
 	 
 	 public void cloneOpportunity() throws InterruptedException {
-	 
-		 driver.get(driver.getCurrentUrl());
-	 
+		  
 		 driver.navigate().to(opportunityPageurl);
-	 
-	 opportunityPage.firstOpportunityClick();
-	 
-	 System.out.println("first opportunity clicked");
-	 Thread.sleep(4000);
-	 
-	 snapshot.dropdownClick(); 
-	 System.out.println("dropdown opportunity clicked");
-	 Thread.sleep(2000);
-	 
-	  snapshot.cloneButtonClick(); 
-	  System.out.println("Clone button clicked");
-	 Thread.sleep(2000);
-	 
-	 WebDriverWait wait = new WebDriverWait(driver, 10);
-	 wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='CloseDate']")));
-	 
-	 Thread.sleep(2000);
-	  
-	 JavascriptExecutor jse2= (JavascriptExecutor)driver;
-	  jse2.executeScript("window.scrollBy(0,-550)", "");
-	 
-	 
-	 editOpportunityPage.headerSaveButton();
-	 
-	  System.out.println("Save Button Clicked");
-	 
-	  WebDriverWait wait1 = new WebDriverWait(driver, 10);
-	  wait1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath( "//nav[@class='entityNameTitle']//span"))); 
-	  WebElement rfp =driver.findElement(By.xpath("//nav[@class='entityNameTitle']//span")); 
-	  String actual = rfp.getText(); String expected = "Opportunity";
-	  
-	  Assert.assertEquals(actual, expected);
-	  
-	  Thread.sleep(3000);
-	  
-	  // driver.quit(); 
-	  }
+		 
+		 
+		 opportunityPage.firstOpportunityClick();
+		    
+			System.out.println("first opportunity clicked");
+			Thread.sleep(2000);
+		    snapshot.dropdownClick();
+		    System.out.println("dropdown opportunity clicked");
+		    Thread.sleep(2000);
+		    
+		    snapshot.cloneButtonClick();
+		    System.out.println("Clone button clicked");
+		    Thread.sleep(2000);
+		    
+		   // newOpportunity.nextClick();
+		    
+		    
+		   WebDriverWait wait =new WebDriverWait(driver, 10);
+		   wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='CloseDate']"))); 
+		   
+		   
+		   Thread.sleep(2000);
+			/*
+			 * JavascriptExecutor jse2= (JavascriptExecutor)driver;
+			 * jse2.executeScript("window.scrollBy(0,-550)", "");
+			 */
+		  
+			  
+			  editOpportunityPage.headerSaveButton();
+			  
+			 System.out.println("Save Button Clicked"); 
+			  
+			  WebDriverWait wait1 =new WebDriverWait(driver, 10);
+			  wait1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//nav[@class='entityNameTitle']//span")));
+			  WebElement rfp=driver.findElement(By.xpath("//nav[@class='entityNameTitle']//span")); 
+			  String actual= rfp.getText(); String expected="Opportunity";
+			  
+			  
+			  Assert.assertEquals(actual, expected);
+			  System.out.println("Assert Passed");
+		      Thread.sleep(3000);
+
+		    
+	 }
 
 	
 	
+		@Test (priority = 3)
+		public void deleteOpportunity() throws InterruptedException {
+			
+			test = extent.createTest("DeleteOpportunity");
+			  driver.get(driver.getCurrentUrl());	  
+
+			  Thread.sleep(3000);
+			  
+			  driver.navigate().to(opportunityPageurl);
+			  
+			opportunityPage.firstOpportunityClick();
+		    
+			System.out.println("first opportunity clicked");
+			
+			Thread.sleep(2000);
+		    
+			editOpportunityPage.deleteButtonClick();
+			
+		    System.out.println("Clicked on delete button");
+		
+		    Thread.sleep(2000);
+			deleteopportunity.deleteConfirm();
+			
+		    System.out.println("Confirmed delete");
+		
+			
+		}
+		
+		
+		@Test (priority = 4)
+		public void addOpportunityRFP() throws InterruptedException{
+			
+			test = extent.createTest("Add Opportunity RFP");
+			driver.get(driver.getCurrentUrl());
+			
+			driver.navigate().to(opportunityPageurl);
+			
+			
+			opportunityPage.newOpportunityClick();
+			
+			newOpportunity.rfpClick();
+			
+			newOpportunity.nextClick();
+			
+			
+			Thread.sleep(5000);
+			//snapshot.nameInput("HRT Crosworth");
+			
+			
+			  JavascriptExecutor jse1= (JavascriptExecutor)driver;
+			  jse1.executeScript("window.scrollBy(0,-250)", "");
+			 
+			  Thread.sleep(3000);
+			snapshot.opportunitynameInput("Damien Pipes 2");
+			
+			
+			
+			
+			snapshot.stageDropdown();
+			
+			snapshot.accountNameInput();
+			//
+			
+			snapshot.totalContractInput("200");
+			
+			snapshot.rfpReleaseDateInput();
+			CalenderHandle.calenderHandleDate(driver, "01/28/2019");
+			
+			snapshot.proposalDueDateInput();
+			CalenderHandle.calenderHandleDate(driver, "03/18/2019");
+			
+			
+			snapshot.awardDateInput();
+			CalenderHandle.calenderHandleDate(driver, "04/12/2019");
+			
+			
+			Thread.sleep(2000);
+			snapshot.requirementTabClick();
+			System.out.println("Requirement tab clicked");
+			
+			snapshot.programSummaryInput("TEST TEXT");
+			
+			System.out.println("Input completed");
+			 JavascriptExecutor jse2= (JavascriptExecutor)driver;
+			  jse2.executeScript("window.scrollBy(0,500)", "");
+			
+			snapshot.saveClick();
+			System.out.println("Save Clicked.");
+			
+			//-------------Verifying Test-------------
+			// //div/h2[@class='title slds-text-heading--medium']  ------failed
+			WebDriverWait wait =new WebDriverWait(driver, 10);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[@title='RFP Release Date']")));		
+		    WebElement rfp= driver.findElement(By.xpath("//h1[@title='RFP Release Date']"));
+			String actual= rfp.getText(); 
+		    String expected="RFP Release Date";
+		  
+			Assert.assertEquals(actual, expected);
+			
+			Thread.sleep(3000);
+
+			
+			
+		}
+		
+		
+		@Test (priority = 5)
+		public void addOpportunityCommercial() throws InterruptedException{
+			
+			test = extent.createTest("Add Opportunity Commercial");
+			
+			driver.get(driver.getCurrentUrl());
+			
+			driver.navigate().to(opportunityPageurl);
+			
+			
+			opportunityPage.newOpportunityClick();
+			
+			newOpportunity.rfpClick();
+			
+			newOpportunity.nextClick();
+			
+			
+			Thread.sleep(5000);
+			//snapshot.nameInput("HRT Crosworth");
+			
+			
+			  JavascriptExecutor jse1= (JavascriptExecutor)driver;
+			  jse1.executeScript("window.scrollBy(0,-250)", "");
+			 
+			  Thread.sleep(3000);
+			snapshot.opportunitynameInput("Damien Pipes 2");
+			
+			
+			
+			
+			snapshot.stageDropdown();
+			
+			snapshot.accountNameInput();
+			//
+			
+			snapshot.totalContractInput("200");
+			
+			snapshot.rfpReleaseDateInput();
+			CalenderHandle.calenderHandleDate(driver, "01/28/2019");
+			
+			snapshot.proposalDueDateInput();
+			CalenderHandle.calenderHandleDate(driver, "03/18/2019");
+			
+			
+			snapshot.awardDateInput();
+			CalenderHandle.calenderHandleDate(driver, "04/12/2019");
+			
+			
+			Thread.sleep(2000);
+			snapshot.requirementTabClick();
+			System.out.println("Requirement tab clicked");
+			
+			snapshot.programSummaryInput("TEST TEXT");
+			
+			System.out.println("Input completed");
+			 JavascriptExecutor jse2= (JavascriptExecutor)driver;
+			  jse2.executeScript("window.scrollBy(0,500)", "");
+			
+			snapshot.saveClick();
+			System.out.println("Save Clicked.");
+			
+			//-------------Verifying Test-------------
+			// //div/h2[@class='title slds-text-heading--medium']  ------failed
+			WebDriverWait wait =new WebDriverWait(driver, 10);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[@title='RFP Release Date']")));		
+		    WebElement rfp= driver.findElement(By.xpath("//h1[@title='RFP Release Date']"));
+			String actual= rfp.getText(); 
+		    String expected="RFP Release Date";
+		  
+			Assert.assertEquals(actual, expected);
+			
+			Thread.sleep(3000);
+
+			
+			
+		}
+
+		
+		
+		
+		 @AfterMethod
+		 public void afterMethod(ITestResult result)
+		 {
+		     try
+		  {
+		     if(result.getStatus() == ITestResult.SUCCESS)
+		     {
+
+		         //Do something here
+		         System.out.println(result.getName()+" passed **********");
+		     }
+
+		     else if(result.getStatus() == ITestResult.FAILURE)
+		     {
+		          //Do something here
+		         System.out.println(result.getName()+"Failed ***********");
+		         Utility.captureScreenshot(driver, result.getName());
+		    		
+
+		     }
+
+		      else if(result.getStatus() == ITestResult.SKIP ){
+
+		         System.out.println(result.getName()+"Skiped***********");
+
+		     }
+		     
+		     
+		 }
+		    catch(Exception e)
+		    {
+		      e.printStackTrace();
+		    }
+
+		 }
+		
+
 	
 	
 	

@@ -8,7 +8,7 @@ public class ChangeRecordTypePage {
 	
 	WebDriver driver;
 	
-	By next = By.xpath("//button[@title='Next']");
+	By next = By.xpath("//button[@title='Next']/span");
 	
 	
 	

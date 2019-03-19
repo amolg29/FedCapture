@@ -22,6 +22,7 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import Library.CalenderHandle;
+import Library.ExtentReportsClass;
 import Library.Utility;
 import pageObjects.AppLauncherPage;
 
@@ -32,7 +33,7 @@ import pageObjects.LoginPage;
 import pageObjects.OpportunityPage;
 import pageObjects.SnapshotPage;
 
-public class SearchBoxEdit {
+public class SearchBoxEdit extends ExtentReportsClass{
 
 	
 
@@ -84,6 +85,8 @@ public class SearchBoxEdit {
 	@Test(priority = 1)
     public void searchOpportunityEdit() throws InterruptedException
     {
+		
+		test = extent.createTest("SearchBoxEdit");
 		
 		login = new LoginPage(driver);
 		dashboard = new DashboardPage(driver);
