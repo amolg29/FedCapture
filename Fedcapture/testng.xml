@@ -16,12 +16,12 @@
        </classes> 
      </test>
          
-   <test thread-count="1" name="ChromeTest3" parallel="methods"> 
+    <test thread-count="1" name="ChromeTest3" parallel="methods"> 
     <classes>   
        <class name="tests.EditButtonOpportunity"/>
         </classes> 
      </test>
-   <!--     
+   
        <test thread-count="1" name="ChromeTest4" parallel="methods"> 
     <classes> 
        <class name="tests.MarkStageComplete"/>
@@ -52,7 +52,40 @@
      </classes> 
      </test>
      
-   -->  
+      <test thread-count="1" name="ChromeTest9" parallel="methods"> 
+    <classes> 
+       <class name="tests.BudgetHandling"/>
+     </classes> 
+     </test>
+     
+     
+      <test thread-count="1" name="ChromeTest10" parallel="methods"> 
+    <classes> 
+       <class name="tests.BudgetHandleRed"/>
+     </classes> 
+     </test>
+     
+     
+      <test thread-count="1" name="ChromeTest11" parallel="methods"> 
+    <classes> 
+       <class name="tests.Contact"/>
+     </classes> 
+     </test>
+     
+     
+     <test thread-count="1" name="ChromeTest12" parallel="methods"> 
+    <classes> 
+       <class name="adminFlows.CustomizeOpp"/>
+     </classes> 
+     </test>
+     
+     
+       <test thread-count="1" name="ChromeTest13" parallel="methods"> 
+    <classes> 
+       <class name="adminFlows.CustomizeOppLayout"/>
+     </classes> 
+     </test>
+      
      
            <!--                      RFP TESTS                                     -->
      

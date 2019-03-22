@@ -1,5 +1,6 @@
 package regressionPackage;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.concurrent.TimeUnit;
 
@@ -7,6 +8,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -15,6 +18,7 @@ import com.aventstack.extentreports.ExtentTest;
 
 import Library.CalenderHandle2;
 import Library.ExtentReportsClass;
+import Library.Utility;
 import pageObjects.AppLauncherPage;
 import pageObjects.ChangeRecordTypePage;
 import pageObjects.ContactPage;
@@ -126,86 +130,86 @@ public class RegressionSuite3 extends ExtentReportsClass {
 	   	
 	}
 
-	@Test(priority = 1)
-    public void customizeOppAddTab() throws InterruptedException{
-		
-		 test = extent.createTest("Add Tab and Delete");	
-		 customopplayout.recordtypeSelect();
-		    
-		    customopplayout.addTabClick();
-		    
-		    Thread.sleep(2000);
-		    customopplayout.addTabdetails("Testing");
-		    
-		    Thread.sleep(2000);
-		    JavascriptExecutor jse2= (JavascriptExecutor)driver;
-			  jse2.executeScript("window.scrollBy(0,300)", "");
-		    
-			  Thread.sleep(2000);
-		    customopplayout.addSectionClick();
-		    
-		    Thread.sleep(3000);
-		    
-		    customopplayout.sectionlabelInput("My Section");
-		    
-		    
-		    //driver.getCurrentUrl();
-		    
-		    Thread.sleep(2000);
-		    
-		    customopplayout.addField();
-		    
-		    customopplayout.addFieldPopup("Name");
-		    
-		    
-		    Thread.sleep(6000);
-		    customopplayout.addField();
-		    
-		    customopplayout.addFieldPopup("Amount");
-		
-		    
-		    Thread.sleep(3000);
-		    jse2.executeScript("window.scrollBy(300,0)", "");
-		    Thread.sleep(3000);
-		    customopplayout.saveClick();
-		    Thread.sleep(9000);
-	
-		    driver.navigate().to("https://fedcapture-packaging-dev-ed.lightning.force.com/lightning/o/Opportunity/list?filterName=Recent");
-		    
-		    
-		    opportunityPage.searchBoxClick("TestToSucceed");
-		    
-		    opportunityPage.firstOpportunityClick();
-		    
-		    
-		    
-		    Thread.sleep(8000);
-		    //opportunityPage.firstOpportunityClick();
-		    JavascriptExecutor jse3 = (JavascriptExecutor)driver;
-		    jse3.executeScript("window.scrollBy(0,300)", "");
-		    
-		    Thread.sleep(3500);
-		    editOppPage.testingTabVerify();
-		    
-		    Thread.sleep(3000);
-		    System.out.println("Verified successfully");
-		    
-		    //home.opportunitiesClick();
-		    
-		    driver.navigate().to("https://fedcapture-packaging-dev-ed.lightning.force.com/lightning/n/FedCapture__Customize_Opp_Layout");
-		 
-		    Thread.sleep(5000);
-		    //dashboard.custOppLayoutClick();
-		    
-		    customopplayout.recordtypeSelect();
-		    
-		    Thread.sleep(4000);
-		    customopplayout.deleteTabClick();
-		    
-		    System.out.println("Success");
-
-		    
-	}
+//	@Test(priority = 1)
+//    public void customizeOppAddTab() throws InterruptedException{
+//		
+//		 test = extent.createTest("Add Tab and Delete");	
+//		 customopplayout.recordtypeSelect();
+//		    
+//		    customopplayout.addTabClick();
+//		    
+//		    Thread.sleep(2000);
+//		    customopplayout.addTabdetails("Testing");
+//		    
+//		    Thread.sleep(2000);
+//		    JavascriptExecutor jse2= (JavascriptExecutor)driver;
+//			  jse2.executeScript("window.scrollBy(0,300)", "");
+//		    
+//			  Thread.sleep(2000);
+//		    customopplayout.addSectionClick();
+//		    
+//		    Thread.sleep(3000);
+//		    
+//		    customopplayout.sectionlabelInput("My Section");
+//		    
+//		    
+//		    //driver.getCurrentUrl();
+//		    
+//		    Thread.sleep(2000);
+//		    
+//		    customopplayout.addField();
+//		    
+//		    customopplayout.addFieldPopup("Name");
+//		    
+//		    
+//		    Thread.sleep(6000);
+//		    customopplayout.addField();
+//		    
+//		    customopplayout.addFieldPopup("Amount");
+//		
+//		    
+//		    Thread.sleep(3000);
+//		    jse2.executeScript("window.scrollBy(300,0)", "");
+//		    Thread.sleep(3000);
+//		    customopplayout.saveClick();
+//		    Thread.sleep(9000);
+//	
+//		    driver.navigate().to("https://fedcapture-packaging-dev-ed.lightning.force.com/lightning/o/Opportunity/list?filterName=Recent");
+//		    
+//		    
+//		    opportunityPage.searchBoxClick("TestToSucceed");
+//		    
+//		    opportunityPage.firstOpportunityClick();
+//		    
+//		    
+//		    
+//		    Thread.sleep(8000);
+//		    //opportunityPage.firstOpportunityClick();
+//		    JavascriptExecutor jse3 = (JavascriptExecutor)driver;
+//		    jse3.executeScript("window.scrollBy(0,300)", "");
+//		    
+//		    Thread.sleep(3500);
+//		    editOppPage.testingTabVerify();
+//		    
+//		    Thread.sleep(3000);
+//		    System.out.println("Verified successfully");
+//		    
+//		    //home.opportunitiesClick();
+//		    
+//		    driver.navigate().to("https://fedcapture-packaging-dev-ed.lightning.force.com/lightning/n/FedCapture__Customize_Opp_Layout");
+//		 
+//		    Thread.sleep(5000);
+//		    //dashboard.custOppLayoutClick();
+//		    
+//		    customopplayout.recordtypeSelect();
+//		    
+//		    Thread.sleep(4000);
+//		    customopplayout.deleteTabClick();
+//		    
+//		    System.out.println("Success");
+//
+//		    
+//	}
 
 	
 	
@@ -281,5 +285,48 @@ public class RegressionSuite3 extends ExtentReportsClass {
 	    
 		
 	}	
+	
+	@AfterMethod
+	 public void afterMethod(ITestResult result)
+	 {
+	     try
+	  {
+	     if(result.getStatus() == ITestResult.SUCCESS)
+	     {
+
+	         //Do something here
+	         System.out.println(result.getName()+" passed **********");
+	     }
+
+	     else if(result.getStatus() == ITestResult.FAILURE)
+	     {
+	          //Do something here
+	         System.out.println(result.getName()+"Failed ***********");
+	        String path= Utility.captureScreenshot(driver, result.getName());
+	     	System.out.println("This is path"+path);
+			String imgPath=System.getProperty("user.dir") + File.separator+path;
+			System.out.println("This is final path"+imgPath);
+			test.addScreenCaptureFromPath(imgPath);
+
+	     }
+
+	      else if(result.getStatus() == ITestResult.SKIP ){
+
+	         System.out.println(result.getName()+"Skiped***********");
+
+	     }
+	     
+	     
+	 }
+	    catch(Exception e)
+	    {
+	      e.printStackTrace();
+	    }
+
+	 }
+	
+
+	
+	
 	
 }

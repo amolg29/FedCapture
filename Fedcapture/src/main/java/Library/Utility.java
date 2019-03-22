@@ -15,14 +15,18 @@ import tests.StartTest;
 public class Utility extends StartTest{
 	WebDriver driver;
        
-	public static void captureScreenshot(WebDriver driver, String screenshotname) throws IOException
+	public static String captureScreenshot(WebDriver driver, String screenshotname) throws IOException
 	{
 		
 		org.openqa.selenium.TakesScreenshot ts= (org.openqa.selenium.TakesScreenshot)driver;
 		File source= ts.getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(source,new File("./Screenshots/"+screenshotname+".png"));
-		System.out.println("screenshot taken");		
 		
+		System.out.println("screenshot taken");		
+		String destination ="/Screenshots/"+screenshotname+".png";
+		System.out.println(destination);
+		System.out.println("This id dest"+destination);
+		return destination;
 	}
 	
 	

@@ -1,5 +1,6 @@
 package regressionPackage;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.concurrent.TimeUnit;
 
@@ -432,8 +433,11 @@ public class RegressionSuite2 extends ExtentReportsClass {
 		     {
 		          //Do something here
 		         System.out.println(result.getName()+"Failed ***********");
-		         Utility.captureScreenshot(driver, result.getName());
-		    		
+		        String path= Utility.captureScreenshot(driver, result.getName());
+		     	System.out.println("This is path"+path);
+				String imgPath=System.getProperty("user.dir") + File.separator+path;
+				System.out.println("This is final path"+imgPath);
+				test.addScreenCaptureFromPath(imgPath);
 
 		     }
 

@@ -29,6 +29,7 @@ public class ExtentReportsClass {
 	        htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir") +"/test-output/MyOwnReport.html");
 	        extent = new ExtentReports();
 	        extent.attachReporter(htmlReporter);
+	       
 	         
 	        extent.setSystemInfo("OS", "Windows ");
 	        extent.setSystemInfo("Host Name", "Amol");
@@ -49,6 +50,7 @@ public class ExtentReportsClass {
 	        {
 	            test.log(Status.FAIL, MarkupHelper.createLabel(result.getName()+" Test case FAILED due to below issues:", ExtentColor.RED));
 	            test.fail(result.getThrowable());
+	          //  test.addScreenCaptureFromPath(imagePath);
 	        }
 	        else if(result.getStatus() == ITestResult.SUCCESS)
 	        {

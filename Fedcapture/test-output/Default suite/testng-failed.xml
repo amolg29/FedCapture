@@ -3,12 +3,18 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test name="Default test(failed)">
     <classes>
-      <class name="regressionPackage.RegressionSuite3">
+      <class name="regressionPackage.RegressionSuite1">
         <methods>
-          <include name="customizeOppLayoutAddTab"/>
+          <include name="editButtonTest"/>
+          <include name="getResult"/>
+          <include name="afterMethod"/>
+          <include name="editTest"/>
+          <include name="tearDown"/>
           <include name="setCapabilities"/>
+          <include name="addOpportunityTask"/>
+          <include name="setUp"/>
         </methods>
-      </class> <!-- regressionPackage.RegressionSuite3 -->
+      </class> <!-- regressionPackage.RegressionSuite1 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

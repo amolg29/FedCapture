@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite thread-count="1" name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <test parallel="methods" name="ChromeTest1(failed)">
+    <parameter name="browser" value="chrome"/>
+    <classes>
+      <class name="regressionPackage.RegressionSuite1">
+        <methods>
+          <include name="editButtonTest"/>
+          <include name="getResult"/>
+          <include name="afterMethod"/>
+          <include name="tearDown"/>
+          <include name="setCapabilities"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- regressionPackage.RegressionSuite1 -->
+    </classes>
+  </test> <!-- ChromeTest1(failed) -->
   <test parallel="methods" name="ChromeTest2(failed)">
     <parameter name="browser" value="chrome"/>
     <classes>
@@ -8,10 +23,12 @@
         <methods>
           <include name="changeRecordType"/>
           <include name="getResult"/>
-          <include name="cloneOpportunity"/>
+          <include name="addOpportunityRFP"/>
+          <include name="addOpportunityCommercial"/>
           <include name="setCapabilities"/>
           <include name="tearDown"/>
           <include name="setUp"/>
+          <include name="afterMethod"/>
         </methods>
       </class> <!-- regressionPackage.RegressionSuite2 -->
     </classes>

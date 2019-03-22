@@ -1,5 +1,6 @@
 package regressionPackage;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.concurrent.TimeUnit;
 
@@ -7,12 +8,15 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import Library.CalenderHandle2;
 import Library.ExtentReportsClass;
+import Library.Utility;
 import pageObjects.AppLauncherPage;
 import pageObjects.ChangeRecordTypePage;
 import pageObjects.ContactPage;
@@ -29,6 +33,8 @@ import pageObjects.SnapshotPage;
 
 public class RegressionSuite4 extends ExtentReportsClass{
 
+	
+	
 	public final String driverPath = "F://chromedriver/";
 	public WebDriver driver;
     
@@ -264,6 +270,47 @@ public class RegressionSuite4 extends ExtentReportsClass{
 	    Thread.sleep(3000);
 		
 	}
+
+	
+	@AfterMethod
+	 public void afterMethod(ITestResult result)
+	 {
+	     try
+	  {
+	     if(result.getStatus() == ITestResult.SUCCESS)
+	     {
+
+	         //Do something here
+	         System.out.println(result.getName()+" passed **********");
+	     }
+
+	     else if(result.getStatus() == ITestResult.FAILURE)
+	     {
+	          //Do something here
+	         System.out.println(result.getName()+"Failed ***********");
+	        String path= Utility.captureScreenshot(driver, result.getName());
+	     	System.out.println("This is path"+path);
+			String imgPath=System.getProperty("user.dir") + File.separator+path;
+			System.out.println("This is final path"+imgPath);
+			test.addScreenCaptureFromPath(imgPath);
+
+	     }
+
+	      else if(result.getStatus() == ITestResult.SKIP ){
+
+	         System.out.println(result.getName()+"Skiped***********");
+
+	     }
+	     
+	     
+	 }
+	    catch(Exception e)
+	    {
+	      e.printStackTrace();
+	    }
+
+	 }
+	
 
 	
 	

@@ -1,5 +1,6 @@
 package regressionPackage;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
@@ -23,6 +24,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import com.aventstack.extentreports.Status;
 import com.beust.jcommander.Parameter;
 
 import Library.CalenderHandle;
@@ -76,12 +78,12 @@ public class RegressionSuite1 extends ExtentReportsClass{
 	public void setCapabilities(String browser) throws FileNotFoundException, InterruptedException {
 
 		
-		  PrintStream out = new PrintStream(new FileOutputStream("F://output.txt"));
-		  System.setOut(out);
+	//	  PrintStream out = new PrintStream(new FileOutputStream("F://output.txt"));
+	//	  System.setOut(out);
 		 
-//		   FileOutputStream file = new FileOutputStream("E:\\test.txt");
-//		    TeePrintStream tee = new TeePrintStream(file, System.out);
-//		    System.setOut(tee);
+		   FileOutputStream file = new FileOutputStream("E:\\test.txt");
+		    TeePrintStream tee = new TeePrintStream(file, System.out);
+		    System.setOut(tee);
 		
 		// logger = Logger.getRootLogger();
 		// logger.info("TEST");
@@ -328,7 +330,7 @@ public class RegressionSuite1 extends ExtentReportsClass{
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[@title='RFP Release Date']")));
 		WebElement rfp = driver.findElement(By.xpath("//h1[@title='RFP Release Date']"));
 		String actual = rfp.getText();
-		String expected = "RFP Release Date";
+		String expected = "RFP Release Dat";
 
 		Assert.assertEquals(actual, expected);
 
@@ -455,7 +457,14 @@ public class RegressionSuite1 extends ExtentReportsClass{
 			else if (result.getStatus() == ITestResult.FAILURE) {
 				// Do something here
 				System.out.println(result.getName()+"Failed ***********");
-				Utility.captureScreenshot(driver, result.getName());
+				
+				String path=Utility.captureScreenshot(driver, result.getName());
+				System.out.println("This is path"+path);
+				String imgPath=System.getProperty("user.dir") + File.separator+path;
+				System.out.println("This is final path"+imgPath);
+				test.addScreenCaptureFromPath(imgPath);
+				//test.log(Status.FAIL, "The Screenshot is:" , imgPath);
+				
 				// driver.quit();
 
 			}
