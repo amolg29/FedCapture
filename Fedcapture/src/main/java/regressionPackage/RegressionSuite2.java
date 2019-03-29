@@ -182,6 +182,8 @@ public class RegressionSuite2 extends ExtentReportsClass {
 	 @Test(priority = 2)
 	 
 	 public void cloneOpportunity() throws InterruptedException {
+		 
+		 test = extent.createTest("Clone Opportunity");
 		  
 		 driver.navigate().to(opportunityPageurl);
 		 

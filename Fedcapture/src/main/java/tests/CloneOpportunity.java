@@ -123,7 +123,7 @@ public class CloneOpportunity extends ExtentReportsClass {
 	    
 		System.out.println("first opportunity clicked");
 		Thread.sleep(2000);
-	    snapshot.dropdownClick();
+	    //snapshot.dropdownClick();
 	    System.out.println("dropdown opportunity clicked");
 	    Thread.sleep(2000);
 	    
@@ -134,8 +134,8 @@ public class CloneOpportunity extends ExtentReportsClass {
 	   // newOpportunity.nextClick();
 	    
 	    
-	   WebDriverWait wait =new WebDriverWait(driver, 10);
-	   wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='CloseDate']"))); 
+	   //WebDriverWait wait =new WebDriverWait(driver, 10);
+	   //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name='CloseDate']"))); 
 	   
 	   
 	   Thread.sleep(2000);

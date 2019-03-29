@@ -6,7 +6,9 @@
       <class name="regressionPackage.RegressionSuite1">
         <methods>
           <include name="editButtonTest"/>
+          <include name="markStageComplete"/>
           <include name="getResult"/>
+          <include name="searchOpportunityEdit"/>
           <include name="afterMethod"/>
           <include name="editTest"/>
           <include name="tearDown"/>

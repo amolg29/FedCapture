@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
@@ -88,6 +90,20 @@ public class RegressionSuite1 extends ExtentReportsClass{
 		// logger = Logger.getRootLogger();
 		// logger.info("TEST");
 		    
+		  //Create prefs map to store all preferences 
+			Map<String, Object> prefs = new HashMap<String, Object>();
+
+			//Put this into prefs map to switch off browser notification
+			prefs.put("profile.default_content_setting_values.notifications", 2);
+
+			//Create chrome options to set this prefs
+			ChromeOptions options = new ChromeOptions();
+			options.setExperimentalOption("prefs", prefs);
+
+		    
+		    
+		    
+		    
 		    
 		if(browser.equalsIgnoreCase("firefox")){
 			//create firefox instance
@@ -97,7 +113,7 @@ public class RegressionSuite1 extends ExtentReportsClass{
 		else if (browser.equalsIgnoreCase("chrome")) {
 		
 		System.setProperty("webdriver.chrome.driver", driverPath + "chromedriver.exe");
-		driver = new ChromeDriver();
+		driver = new ChromeDriver(options);
 		
 		}
 		
@@ -203,9 +219,9 @@ public class RegressionSuite1 extends ExtentReportsClass{
 		String expected = "RFP Release Date";
 
 		Assert.assertEquals(actual, expected);
-
+        //System.out.println("Assertion Passed!!");
 		Thread.sleep(3000);
-		// driver.quit();
+		 //driver.quit();
 	}
 
 	
@@ -330,7 +346,7 @@ public class RegressionSuite1 extends ExtentReportsClass{
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[@title='RFP Release Date']")));
 		WebElement rfp = driver.findElement(By.xpath("//h1[@title='RFP Release Date']"));
 		String actual = rfp.getText();
-		String expected = "RFP Release Dat";
+		String expected = "RFP Release Date";
 
 		Assert.assertEquals(actual, expected);
 
@@ -400,7 +416,7 @@ public class RegressionSuite1 extends ExtentReportsClass{
 	  
 	  Thread.sleep(3000);
 	 
-	  editOpportunityPage.editOpportunityName("first Edit");
+	  editOpportunityPage.editOpportunityName("Edited Company");
 	  //snapshot.opportunitynameInput("TEST EDIT");
 	  
 	 

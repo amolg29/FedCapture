@@ -194,6 +194,7 @@ public class SnapshotPage {
 	
 	
 		try {
+			
 		driver.findElement(proposalDueDate).click();
 		
 		Thread.sleep(3000);

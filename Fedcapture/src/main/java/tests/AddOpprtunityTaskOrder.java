@@ -3,7 +3,8 @@ package tests;
 
 
 import java.io.FileNotFoundException;
-
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -12,8 +13,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-
-
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -71,10 +71,25 @@ public class AddOpprtunityTaskOrder extends ExtentReportsClass {
 		// create chrome instance
 		System.setProperty("webdriver.chrome.driver", driverPath + "chromedriver.exe");
 		
+		//Create prefs map to store all preferences 
+		Map<String, Object> prefs = new HashMap<String, Object>();
+
+		//Put this into prefs map to switch off browser notification
+		prefs.put("profile.default_content_setting_values.notifications", 2);
+
+		//Create chrome options to set this prefs
+		ChromeOptions options = new ChromeOptions();
+		options.setExperimentalOption("prefs", prefs);
+
+		//Now initialize chrome driver with chrome options which will switch off this browser notification on the chrome browser
+		//WebDriver driver = new ChromeDriver(options);
+
+		
+		
 		
 		
 		// System.setProperty("webdriver.chrome.driver", driverPath+"chromedriver.exe");
-				driver = new ChromeDriver();
+				driver = new ChromeDriver(options);
 				// driver2=new ChromeDriver();
 				driver.manage().timeouts().implicitlyWait(160, TimeUnit.SECONDS);
 				// driver2.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS );

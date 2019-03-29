@@ -3,6 +3,8 @@ package pageObjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import com.beust.jcommander.Parameter;
+
 public class LoginPage {
 
 	  
@@ -35,10 +37,10 @@ public class LoginPage {
 	}
 	
 	
-	
+	@Parameter()
 	public void usernameInput() {
 		
-		driver.findElement(username).sendKeys("appexchange@technomile.com");
+		driver.findElement(username).sendKeys("");
 		
 		
 		
@@ -48,7 +50,7 @@ public class LoginPage {
 	public void passwordInput() {
 		
 		
-		driver.findElement(password).sendKeys("dev@20131");
+		driver.findElement(password).sendKeys("");
 		
 		
 	}

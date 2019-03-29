@@ -12,12 +12,12 @@
      </test>
    
      
-        <test thread-count="1" name="ChromeTest2" parallel="methods">
+      <!--   <test thread-count="1" name="ChromeTest2" parallel="methods">
        <parameter name="browser" value="chrome" />
       <classes>
        <class name="regressionPackage.RegressionSuite2"/>
       </classes> 
-     </test>
+     </test> -->
 
  
  

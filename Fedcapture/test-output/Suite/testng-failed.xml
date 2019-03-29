@@ -16,21 +16,4 @@
       </class> <!-- regressionPackage.RegressionSuite1 -->
     </classes>
   </test> <!-- ChromeTest1(failed) -->
-  <test parallel="methods" name="ChromeTest2(failed)">
-    <parameter name="browser" value="chrome"/>
-    <classes>
-      <class name="regressionPackage.RegressionSuite2">
-        <methods>
-          <include name="changeRecordType"/>
-          <include name="getResult"/>
-          <include name="addOpportunityRFP"/>
-          <include name="addOpportunityCommercial"/>
-          <include name="setCapabilities"/>
-          <include name="tearDown"/>
-          <include name="setUp"/>
-          <include name="afterMethod"/>
-        </methods>
-      </class> <!-- regressionPackage.RegressionSuite2 -->
-    </classes>
-  </test> <!-- ChromeTest2(failed) -->
 </suite> <!-- Failed suite [Suite] -->
