@@ -58,7 +58,7 @@
 
 							<!-- Email Authentication(USername and Password) -->
 							<mailuser>amol.gaymukhe@technomile.com</mailuser>
-							<mailpassword>Dev@20121</mailpassword>
+							<mailpassword></mailpassword>
 
 							<receivers>
 								<!-- To Email address -->
